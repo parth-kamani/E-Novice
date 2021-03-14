@@ -1,0 +1,21 @@
+body {
+    background-color: #add8e6;
+    color:teal;
+}
+
+h1 {
+    font-size: 35pt;
+    color: lightslategrey;
+    font-style: italic;
+    text-align: center;
+}
+
+.d1 {
+    text-align: center;
+}
+
+.hbar1 {
+    display: inline;
+    margin: 15px;
+    font-size: small;
+}

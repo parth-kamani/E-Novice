@@ -1,0 +1,31 @@
+{% extends 'myapp/base0.html' %}
+
+{% block body_block %}
+    <div style="margin-left:1cm">
+        {% if msg %}
+            <p> {{ msg }}</p>
+        {% else %}
+            <p>
+            <h3><b><u> First Name:</u></b> {{ user.first_name }}<br></h3>
+            <h3><b><u>Last Name:</u></b> {{ user.last_name }}<br></h3><br>
+            <b><u><h3> Interested Topics </h3></u></b>
+            {% for topic in interested %}
+                <li> {{ topic }} </li>
+            {% endfor %}
+            <br>
+            <b><u><h3> Registered Courses </h3></u></b>
+            {% for course in stud_course %}
+                <li> {{ course }} </li>
+            {% endfor %}
+
+            <br><br>
+            <form method="post" action="{% url 'myapp:myaccount' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-primary" name="submit1" value="Upload Image"/>
+            </form>
+            </p>
+        {% endif %}
+    </div>
+    <br>
+{% endblock %}

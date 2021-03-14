@@ -1,0 +1,24 @@
+{% extends 'myapp/base0.html' %}
+
+{% block body_block %}
+    <div style="margin-left: 1cm;margin-right:1cm;">
+        <form action="{% url 'myapp:user_login' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-group">
+                <b><label for="username">Username:</label></b>
+                <input type="input" name="username" class="form-control" required>
+            </div>
+            <div>
+                <b><label for="password">Password:</label></b>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <br>
+            <input type="submit" name="submit" value="Login" class="btn btn-primary"/>
+            <a class="btn btn-primary" href="{% url 'myapp:reset_password' %}">Reset Password</a>
+        </form>
+        <div>
+
+        </div>
+    </div>
+{% endblock %}

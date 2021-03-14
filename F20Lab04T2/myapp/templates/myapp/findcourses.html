@@ -1,0 +1,12 @@
+{% extends 'myapp/base0.html' %}
+
+{% block body_block %}
+    <div style="margin-left: 1cm;">
+        <form action="{% url 'myapp:findcourses' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn btn-primary" type="submit" name="submit1" value="Find Courses"/>
+            <br><br>
+        </form>
+    </div>
+{% endblock %}

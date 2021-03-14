@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>E-Learning WebApp!: Detail</title>
+</head>
+<body>
+{% if topic %}
+    <p><b><u>Topics id</u></b>: {{ topic.id }}</p>
+    <p><b><u>Topic Name</u></b>: {{ topic.name | upper }} &emsp; <b><u>Length</u></b>: {{ topic.length }} </p>
+    <p><b><u>List of Courses in {{ topic.name }}</u></b>:</p>
+    <ol>
+        {% for list in course_list %}
+            <li><p>: {{ list.title }} &emsp;: &emsp;<i>$ {{ list.price }}</i></p></li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <strong>There are no available topics!</strong>
+{% endif %}
+<p><a href="{% url 'myapp:index' %}">Back to Homepage</a></p>
+</body>
+</html>

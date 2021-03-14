@@ -1,0 +1,46 @@
+{% extends 'myapp/base0.html' %}
+{% block title %} My Orders Page {% endblock %}
+
+{% block body_block %}
+    <div style="margin-left:20px;margin-top:20px">
+        <p>
+            <b><u>First Name:</u></b> {{ user.first_name }}<br>
+            <b><u>Last Name:</u></b> {{ user.last_name }}<br>
+            {% if order_list %}
+                <b><u><h3>Orders:</h3></u></b>
+                <div style="margin-right:1cm">
+                    <table border="1" width="100%" style="text-align:center; vertical-align:center;">
+                        <th>ORDER ID</th>
+                        <th>ORDER DATE</th>
+                        <th>ORDER STATUS</th>
+                        <th>Courses</th>
+                        {% for order in order_list %}
+                            <tr>
+                                <td>{{ order.id }}</td>
+                                <td>{{ order.order_date }}</td>
+                                <td>
+                                    {% if order.order_status == "1" %}
+                                        Confirmed
+                                    {% elif order.order_status == "0" %}
+                                        Cancelled
+                                    {% elif order.order_status == "2" %}
+                                        On Hold
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <ul>
+                                        {% for course in order.courses.all %}
+                                            <li> {{ course.title }} </li>
+                                        {% endfor %}</ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% else %}
+                <p>You have not placed any order yet!</p>
+            {% endif %}
+        </p>
+    </div>
+
+{% endblock %}

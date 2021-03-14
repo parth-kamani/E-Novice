@@ -1,0 +1,20 @@
+{% extends 'myapp/base0.html' %}
+
+{% block myhdg %}Hello {{ name }} {% endblock %}
+
+{% block body_block %}
+    <div style="margin-left:1cm">
+        {% if courselist %}
+
+            <h2>List of Courses {% if length %}{{ length }} weeks long and {% endif %}{% if max_price %}under
+                ${{ max_price }}{% endif %}</h2>
+            <ul>
+                {% for course  in courselist %}
+                    <li> {{ course.title }} </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>Currently there are no courses matching those criteria</strong>
+        {% endif %}
+    </div>
+{% endblock %}
